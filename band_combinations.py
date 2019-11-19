@@ -38,10 +38,17 @@ for folder in folder_list:
     redn = normalize(red)
     bluen = normalize(blue)
     greenn = normalize(green)
+    irn = normalize(ir)
 
+    # Stack bands
+    rgb = np.dstack((redn, greenn, bluen, irn))
+    plt.imsave('comp_img/' + folder + '.png', rgb)
+
+    '''
     # Stack bands
     rgb = np.dstack((redn, greenn, bluen))
 
     # View the color composite
     plt.imsave('img/' + folder + '.png', rgb)
     plt.imsave('ir_img/' + folder + '.png', ir)
+    '''
