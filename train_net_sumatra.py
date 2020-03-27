@@ -66,13 +66,15 @@ for inner_folder in folder_list:
         print(count)
         count += 1
 
-print('shape: ' + str(images.shape))
+print('img shape: ' + str(images.shape))
+final_data = images[:, :, :, np.newaxis]
+print('data shape: ' + str(final_data.shape))
 # print('labels: ' + labels)
 
 # data split
-train_features, test_features, train_target, test_target = train_test_split(images, labels, test_size=0.3)
-train_target = to_categorical(train_target)
-test_target = to_categorical(test_target)
+train_features, test_features, train_target, test_target = train_test_split(final_data, labels, test_size=0.3)
+# train_target = to_categorical(train_target)
+# test_target = to_categorical(test_target)
 train(train_features, train_target, test_features, test_target)
 '''
 
