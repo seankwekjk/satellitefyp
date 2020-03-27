@@ -1,7 +1,7 @@
 import os
 import numpy as np
 
-from cnn_code.cnn import train
+from cnn_code.cnn_sumatra import train
 from keras.utils import to_categorical
 from natsort import natsorted
 from PIL import Image
