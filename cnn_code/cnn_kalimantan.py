@@ -26,6 +26,14 @@ def train(x_train, y_train, x_test, y_test):
     estimator = KerasRegressor(build_fn=build_model, epochs=20, batch_size=5, verbose=0)
     estimator.fit(x_train, y_train)
 
+    # serialize model to JSON
+    model_json = estimator.model.to_json()
+    with open("kalimantan_model.json", "w") as json_file:
+        json_file.write(model_json)
+    # serialize weights to HDF5
+    estimator.model.save_weights("kalimantan_model.h5")
+    print("Saved model to disk")
+
     predictions = estimator.predict(x_test)
     for x, prediction in enumerate(predictions):
         print(y_test[x] + ' vs ' + prediction)
